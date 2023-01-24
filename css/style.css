@@ -1,0 +1,422 @@
+/* * {
+  outline: 2px solid limegreen;
+} */
+
+:root {
+
+  --clr-accent-100: hsl(35, 77%, 62%);
+  --clr-accent-200: hsl(5, 85%, 63%);
+
+  --clr-neutral-100: hsl(36, 100%, 99%);
+  --clr-neutral-200: hsl(233, 8%, 79%);
+
+  --clr-primary-400: hsl(236, 13%, 42%);
+  --clr-primary-900: hsl(240, 100%, 5%);
+
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
+
+  --ff-primary: 'Inter', sans-serif;
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+
+  --fs-300: 0.8125rem;
+  --fs-400: 0.9375rem;
+  --fs-500: 1.05rem;
+  --fs-600: 1.4rem;
+  --fs-700: 1.875rem;
+  --fs-800: 2.8rem;
+  --fs-900: 3.5rem;
+
+  --fs-body: var(--fs-400);
+  --fs-h1: var(--fs-800);
+  --fs-h2: var(--fs-700);
+  --fs-h3: var(--fs-600);
+  --fs-h4: var(--fs-500);
+  --fs-nav: var(--fs-500);
+  --fs-button: var(--fs-500);
+
+
+  --size-100: 0.25rem;
+  --size-200: 0.5rem;
+  --size-300: 0.75rem;
+  --size-400: 1rem;
+  --size-500: 1.5rem;
+  --size-600: 2rem;
+  --size-700: 3rem;
+  --size-800: 4rem;
+  --size-900: 5rem;
+
+}
+
+
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* END OF RESET */
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  color: var(--clr-primary-400);
+  line-height: 1.65;
+}
+
+.button {
+  cursor: pointer;
+  padding: 0.7rem 2.9rem;
+  border: none;
+  letter-spacing: 0.2rem;
+  background-color: var(--clr-accent-200);
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-bold);
+}
+
+.button:hover {
+  padding: 0.7rem 2.9rem;
+  border: none;
+  letter-spacing: 0.2rem;
+  background-color: var(--clr-accent-200);
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-bold);
+}
+
+.new-articles-list h4 {
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+.new-articles-list p {
+  color: var(--clr-neutral-200);
+}
+
+/* Front page articles preview */
+
+.fp-articles-preview {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.fp-articles-preview a {
+  text-decoration: none;
+}
+
+@media(min-width: 900px) {
+  .fp-articles-preview {
+    flex-direction: row;
+  }
+
+  .fp-articles-preview li {
+    /* if flex basis is equal to min width the resulting behaviour is that 
+  flex items will shrink before they wrap */
+    flex: 1 1 325px;
+  }
+}
+
+.fp-articles-preview li {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-width: 325px;
+  max-width: 410px;
+  gap: min(1.5rem, 5%);
+}
+
+/* FIGURE OUT LINKS */
+/* .fp-articles-preview li:hover {
+  cursor: pointer;
+}
+
+.fp-articles-preview li:hover h4 {
+  color: var(--clr-accent-200);
+} */
+
+.fp-articles-preview {
+  counter-reset: count;
+}
+
+.fp-articles-preview li {
+  counter-increment: count;
+}
+
+.fp-articles-preview-text::before {
+  content: counter(count, decimal);
+  font-size: 2.1rem;
+  line-height: 1;
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-200);
+
+}
+
+.fp-articles-preview li:nth-child(-n+9) .fp-articles-preview-text::before {
+  content: "0" counter(count, decimal);
+}
+
+.fp-articles-preview-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.fp-articles-preview-text h4 {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-extra-bold);
+  color: var(--clr-primary-900);
+}
+
+
+
+/* Utility classes */
+
+:where(.flow :not(:first-child)) {
+  margin-top: var(--flow-spacer, 3em);
+}
+
+/* FIGURE OUT HOW TO MAKE FLOW SELECT ONLY DIRECT CHILDREN IN 1 STATEMENT WITHOUT CHANGING IT TO
+FLOW 2 */
+:where(.flow-direct-children> :not(:first-child)) {
+  margin-top: var(--flow-spacer, 3em);
+}
+
+:where(.flow[data-spacing="tight"] :not(:first-child)) {
+  margin-top: var(--flow-spacer, 1em);
+}
+
+.text-primary-400 {
+  color: var(--clr-primary-400);
+}
+
+.text-primary-900 {
+  color: var(--clr-primary-900);
+}
+
+.text-accent-100 {
+  color: var(--clr-accent-100);
+}
+
+.text-accent-200 {
+  color: var(--clr-accent-200);
+}
+
+.text-neutral-100 {
+  color: var(--clr-neutral-100);
+}
+
+.text-neutral-200 {
+  color: var(--clr-neutral-200);
+}
+
+.bg-primary-400 {
+  background-color: var(--clr-primary-400);
+}
+
+.bg-primary-900 {
+  background-color: var(--clr-primary-900);
+}
+
+.bg-accent-100 {
+  background-color: var(--clr-accent-100);
+}
+
+.bg-accent-200 {
+  background-color: var(--clr-accent-200);
+}
+
+.bg-neutral-100 {
+  background-color: var(--clr-neutral-100);
+}
+
+.bg-neutral-200 {
+  background-color: var(--clr-neutral-200);
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
+.fw-extra-bold {
+  font-weight: var(--fw-extra-bold);
+}
+
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+.fs-h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.1;
+}
+
+.fs-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+}
+
+.fs-300 {
+  font-size: var(--fs-300);
+}
+
+.fs-400 {
+  font-size: var(--fs-400);
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.fs-700 {
+  font-size: var(--fs-700);
+}
+
+.fs-800 {
+  font-size: var(--fs-800);
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+
+.padding-block-100 {
+  padding-block: var(--size-100);
+}
+
+.padding-block-200 {
+  padding-block: var(--size-200);
+}
+
+.padding-block-300 {
+  padding-block: var(--size-300);
+}
+
+.padding-block-400 {
+  padding-block: var(--size-400);
+}
+
+.padding-block-500 {
+  padding-block: var(--size-500);
+}
+
+.padding-block-600 {
+  padding-block: var(--size-600);
+}
+
+.padding-block-700 {
+  padding-block: var(--size-700);
+}
+
+.padding-block-800 {
+  padding-block: var(--size-800);
+}
+
+.padding-block-900 {
+  padding-block: var(--size-900);
+}
+
+
+.visually-hidden {
+  position: absolute;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  --max-width: 1440px;
+  --horizontal-padding: 1rem;
+
+  width: min(var(--max-width), 100% - var(--horizontal-padding)*2);
+  margin-inline: auto;
+
+}
