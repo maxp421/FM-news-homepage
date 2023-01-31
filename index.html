@@ -17,19 +17,25 @@
   <div class="container">
 
     <header>
-      <svg class="logo">
-        <use xlink:href="assets/images/logo.svg#logo"></use>
-      </svg>
+      <div class="nav-wrapper padding-block-700">
+        <svg class="logo">
+          <a href="#">
+            <use xlink:href="assets/images/logo.svg#logo"></use>
+          </a>
+        </svg>
 
-      <nav>
-        <ul role="list">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">New</a></li>
-          <li><a href="#">Popular</a></li>
-          <li><a href="#">Trending</a></li>
-          <li><a href="#">Categories</a></li>
-        </ul>
-      </nav>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false"><span
+            class="visually-hidden">Menu</span></button>
+        <nav>
+          <ul id="primary-navigation" data-visible="false" class="primary-nav" role="list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Categories</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -171,7 +177,7 @@
     </div>
   </div>
 
-  <script type="module" src="main.js"></script>
+  <script type="module" src="main.js" defer></script>
 </body>
 
 </html>
