@@ -253,6 +253,20 @@ body {
     color: var(--clr-primary-900);
   }
 
+  /* disable scrolling when menu is open */
+  body[data-overlay="true"] {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  body[data-overlay="true"]::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: hsl(0, 0%, 0%, 0.5);
+    z-index: 100;
+  }
+
 }
 
 /* main grid */
