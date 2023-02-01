@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: https://www.frontendmentor.io/solutions/responsive-newshomepage-using-css-flexbox-grid-semantic-html5-EDSl6uo907
 - Live Site URL: https://maxp421.github.io/FM-news-homepage/
 
 ## My process
